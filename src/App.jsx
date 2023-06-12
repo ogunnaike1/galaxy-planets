@@ -12,8 +12,6 @@ const App = () => {
   const [header4, setHeader4] = useState("", []);
   const [input4, setInput4] = useState("", []);
 
-
-
   const changeHeader1 = () => {
     if (input1.length > 10) {
       setHeader1("Your name is too long!");
