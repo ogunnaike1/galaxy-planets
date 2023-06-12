@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="width: 300px; height: 200px; background-color: blue; display: flex; flex-direction: column; margin: auto;" id="disable">
+        <p style="font-size: 20px; color: white; text-align: center;" id="demo">Enter your name</p>
+        
+        <input style="width: 97%; height: 50px; background-color: aqua;" type="text" id="input1" placeholder="Enter your name">
+        <button style="height: 50px; width: 100%;" id="click1" onclick="check()">check</button><br>
+    </div>
+    
+    <div style="width: 300px; height: 200px; background-color: blue; display: none; flex-direction: column; margin: auto;"  id="disable1">
+        <p style="font-size: 20px; color: white; text-align: center;" id="demo1">welcome <span id="name1"></span> <br> Choose your planet (There are 4 planets (0, 1, 2, 3))</p>
+        <input style="width: 97%; height: 50px; background-color: aqua;"  type="text" id="input2">
+        <button style="height: 50px; width: 100%;" onclick="using()">check</button><br>
+    </div>
+    
+    
+    <div style="width: 300px; height: 200px; background-color: blue; display: none; flex-direction: column; margin: auto;"  id="disable2">
+        <p style="font-size: 20px; color: white; text-align: center;" id="demo2">Guess a number from (1000 - 2500)</p>
+        <input style="width: 97%; height: 50px; background-color: aqua;" type="text" id="input3">
+        <button style="height: 50px; width: 100%;" onclick="guessnumber()">check</button><br>
+    </div>
+    
+</body>
+<script>
+
+let input1 = document.getElementById('input1');
+      let input2 = document.getElementById('input2');
+      const planet = ["Deuteron", "Axton", "Capricorn", "Galacticon"];
+
+      const guessNumber = Math.floor((Math.random() * 2500) + 1000);
+      console.log(guessNumber)
+      
+        var min = 1300;
+        var max = 2300;
+        var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        var minx = 1000;
+        var maxx = 2500;
+        let input3 = document.getElementById("input3");
+        let regAlpha = /^[A-Za-z]+$/;
+      
+     
+        
+
+        function check(){
+            if(input1.value.length <= 10 && input1.value.length > 2 && input1.value.match(regAlpha)){
+
+                // document.getElementById('demo').innerHTML = 'Choose your planet ';
+                document.getElementById("disable").style.display = "none";
+                document.getElementById("disable1").style.display = "flex";
+                document.getElementById("name1").innerHTML = input1.value;
+               
+                // input1.value = ""
+                // input1.placeholder = "Choose your planet"
+
+
+            } else if(input1.value.length > 10){
+                document.getElementById('demo').innerHTML = 'name is too long';
+
+            }else if(input1.value.length <= 2){
+                document.getElementById('demo').innerHTML = 'name is too short';
+
+            }else {
+                document.getElementById('demo').innerHTML = 'invalid character';
+
+            }
+
+          
+     
+        
+
+           
+        }
+
+        function using(){
+
+            if(input2.value == 0){
+                input2.value = "Deuteron";
+                document.getElementById('demo1').innerHTML = 'guess a number';
+                document.getElementById("disable").style.display = "none";
+                document.getElementById("disable1").style.display = "none";
+                document.getElementById("disable2").style.display = "flex";
+                
+
+
+            }else if(input2.value == 1){
+                input2.value = "Axton";
+                document.getElementById('demo1').innerHTML = 'guess a number';
+                document.getElementById("disable").style.display = "none";
+                document.getElementById("disable1").style.display = "none";
+                document.getElementById("disable2").style.display = "flex";
+
+            }else if(input2.value == 2){
+                input2.value = "Capricorn";
+                document.getElementById('demo1').innerHTML = 'guess a number';
+                document.getElementById("disable").style.display = "none";
+                document.getElementById("disable1").style.display = "none";
+                document.getElementById("disable2").style.display = "flex";
+
+            }else if(input2.value == 3){
+                input2.value = "Galacticon";
+                document.getElementById('demo1').innerHTML = 'guess a number';
+                document.getElementById("disable").style.display = "none";
+                document.getElementById("disable1").style.display = "none";
+                document.getElementById("disable2").style.display = "flex";
+
+            }else{
+                document.getElementById('demo1').innerHTML = 'Error! Choose your planet (There are 4 planets (Deuteron, Axton, Capricorn, Galacticon))';
+
+            }
+    }
+       
+
+
+    function guessnumber(){
+            if(input3.value < minx){
+                document.getElementById("demo2").innerHTML = "too low";
+                
+
+
+            } else if(input3.value > maxx){
+                document.getElementById("demo2").innerHTML = "too high";
+
+            }else if(input3.value >= randomNumber){
+                document.getElementById("demo2").innerHTML = "you win"+ " " + input2.value + " "  +  "Guessed" + " "  +  randomNumber;
+
+            }else{
+                document.getElementById("demo2").innerHTML = "you lose" +  " " + input2.value + " "  +  "Guessed" + " "  +  randomNumber;
+
+
+
+            }
+
+
+        }
+
+        // function guessnumber(){
+        //     const planet = ["Deuteron", "Axton", "Capricorn", "Galacticon"];
+        //     let planet1 = input1.value;
+
+        //     if(planet1 = planet.includes("Deuteron", "Axton", "Capricorn", "Galacticon")){
+
+        //     document.getElementById('demo').innerHTML = 'guess a number';
+
+
+        //     } else{
+        //     document.getElementById('demo').innerHTML = 'error';
+
+        //     }
+        // }
+
+ 
+
+</script>
+</html>
