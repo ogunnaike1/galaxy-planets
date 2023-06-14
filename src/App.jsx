@@ -9,26 +9,19 @@ const App = () => {
   const [input2, setInput2] = useState("", []);
   const [header3, setHeader3] = useState("", []);
   const [input3, setInput3] = useState("", []);
-  const [randomNumber, setRandomnumber] = useState(Math.floor(Math.random() * (2500 - 1000 + 1)) + 1000 , [])
-  
- 
-
+  const planets = ["Deuteron", "Axton", "Capricorn", "Galacticon"];
 
   const changeHeader1 = () => {
     if (input1.length <= 10 && input1.length > 2 && input1.match(/^[A-Za-z]+$/)) {
       setHeader2("Welcome " + input1 + ". " + "Choose your planet (There are 4 planets (1,2,3,4))");
       console.log("The input length is ", input1.length);
       changeStateNumber(1);
-      
     }
-
     else if (input1.length < 3) {
       setHeader1("Your name is too short!");
     }
-
     else if (input1.length > 10) {
       setHeader1("Your name is too long!");
-     
     }
     else {
       setHeader1("invalid character");
@@ -40,33 +33,14 @@ const App = () => {
   }
 
   const changeHeader2 = () => {
-    if(input2 == 1){
-      
-    changeStateNumber(2);
-    setHeader3("Guess a number from (1000 - 2500)");
-    setInput2("Deuteron")
-    
-    }
-    else if(input2 == 2){
+    if (input2 > 0 && input2 < 5) {
       changeStateNumber(2);
-    setHeader3("Guess a number from (1000 - 2500)");
-    setInput2("Axton")
-
+      setHeader3("Guess a number from (1000 - 2500)");
+      setInput2(planets[input2]);
     }
-    else if(input2 == 3){
-      changeStateNumber(2);
-    setHeader3("Guess a number from (1000 - 2500)");
-    setInput2("Capricorn")
 
-    }else if(input2 == 4){
-      changeStateNumber(2);
-    setHeader3("Guess a number from (1000 - 2500)");
-    setInput2("Galacticon")
-
-    }
-    else{
-      setHeader2('Error! Choose your planet (There are 4 planets (Deuteron, Axton, Capricorn, Galacticon)')
-
+    else {
+       setHeader2('Error! Choose your planet (There are 4 planets (Deuteron, Axton, Capricorn, Galacticon)')
     }
   }
 
@@ -75,40 +49,32 @@ const App = () => {
   }
  
   const changeHeader3 = () => {
+    const randomNumber = Math.floor(Math.random() * (2500 - 1000 + 1)) + 1000;
+
     if(input3 < 1000 && input3.replace(/\D/g, '')){
       setHeader3("Number is too low")
-
     }
-    else if(input3 > 2500 && input3.replace(/\D/g, '')){
+    else if(input3 > 2500 && input3.replace(/\D/g, '')) {
       setHeader3("Number is too high")
     }
     else if(input3 >= randomNumber){
       setHeader3("you win"+ " " + input2 + " "  +  "Guessed" + " "  +  randomNumber)
-
     }
     else if(input3 < randomNumber){
       setHeader3("you lose"+ " " + input2 + " "  +  "Guessed" + " "  +  randomNumber)
-
     }
     else{
-      setHeader3("enter number only")
-      
-
+      setHeader3("enter number only")  
     }
-    
   }
 
   const changeInput3 = (event) => {
     setInput3(event.target.value);
   }
  
-
- 
   const changeStateNumber = (number) => {
     setState(number)
-
   }
-
 
   {
     if (stateNumber == 0) {
@@ -161,23 +127,6 @@ const App = () => {
       </div>    
       );
     }
-  //   if (stateNumber == 3) {
-  //     return (
-  //       <div className="App">
-  //       <header className="App-header">
-  //         <p>
-  //           Galaxy Planets
-  //         </p>
-  //         <div className="mainDiv">
-  //           <p className='paraGraph' id="demo">{header4}</p>     
-  //           <input className='inputOne' type="text" id="input1" value={input4} onChange={changeInput4} placeholder="Guess a number" />
-  //           <button className='buttonClick' id="click1" onClick={changeHeader4}>check</button>
-  //         </div>
-  //       </header>
-  //     </div>    
-  //     );
-  //   }
-  // }
   }
 }
 
