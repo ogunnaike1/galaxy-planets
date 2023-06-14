@@ -13,7 +13,7 @@ const App = () => {
 
   const changeHeader1 = () => {
     if (input1.length <= 10 && input1.length > 2 && input1.match(/^[A-Za-z]+$/)) {
-      setHeader2("Welcome " + input1 + ". " + "Choose your planet (There are 4 planets (1,2,3,4))");
+      setHeader2("Welcome " + input1 + ". " + "Choose your planet (There are 4 planets (0,1,2,3))");
       console.log("The input length is ", input1.length);
       changeStateNumber(1);
     }
